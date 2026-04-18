@@ -335,6 +335,16 @@ export default function App() {
               </p>
             </button>
 
+            <button
+              onClick={() => setPage("recap")}
+              className="rounded-3xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1"
+            >
+              <h3 className="text-xl font-semibold">Weekly Recap</h3>
+              <p className="mt-2 text-sm text-slate-500">
+                Review completed work, remaining tasks, and next-week focus.
+              </p>
+            </button>
+
             <div className="rounded-3xl bg-white p-6 text-left shadow-sm">
               <h3 className="text-xl font-semibold">Next Milestone</h3>
               <p className="mt-2 text-sm text-slate-500">
@@ -476,6 +486,55 @@ export default function App() {
       </div>
     );
   }
+
+  if (page === "recap") {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
+      <TopNav setPage={setPage} />
+
+      <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
+        <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
+          Weekly Summary
+        </p>
+        <h1 className="text-4xl font-bold">Your Weekly Progress Recap</h1>
+        <p className="mt-3 max-w-2xl text-white/85">
+          Review what you completed this week, identify remaining gaps, and prepare for next week.
+        </p>
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="rounded-[32px] bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-xl font-semibold">Completed This Week</h3>
+          <ul className="space-y-3 text-sm text-slate-600">
+            <li>• Excel for Career Switchers lesson completed</li>
+            <li>• Budgeting Basics module reviewed</li>
+            <li>• Tutor profiles explored</li>
+          </ul>
+        </div>
+
+        <div className="rounded-[32px] bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-xl font-semibold">Remaining Gaps</h3>
+          <ul className="space-y-3 text-sm text-slate-600">
+            <li>• Formula confidence needs improvement</li>
+            <li>• More practice needed on budgeting categories</li>
+            <li>• French speaking review still pending</li>
+          </ul>
+        </div>
+
+        <div className="rounded-[32px] bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-xl font-semibold">Next Week Focus</h3>
+          <ul className="space-y-3 text-sm text-slate-600">
+            <li>• Continue Excel practice</li>
+            <li>• Complete one finance exercise</li>
+            <li>• Schedule one tutor support session</li>
+          </ul>
+        </div>
+      </div>
+
+      <Back setPage={setPage} />
+    </div>
+  );
+}
 
   if (page === "lesson") {
     return (
