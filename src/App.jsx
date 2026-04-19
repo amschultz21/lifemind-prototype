@@ -29,7 +29,13 @@ function TopNav({ setPage }) {
           >
           Notifications 
         </button>
-
+        <button
+          onClick={() => setPage("schedule")}
+          className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
+        >
+          Schedule
+        </button>
+      
       </div>
     </div>
   );
@@ -53,6 +59,8 @@ function TutorRequestModal({
   setSelectedTutor,
   requestSent,
   setRequestSent,
+  scheduledSessions,
+  setScheduledSessions,
 }) {
   return (
     <AnimatePresence>
@@ -133,7 +141,18 @@ function TutorRequestModal({
 
             <div className="mt-6 flex gap-3">
               <button
-                onClick={() => setRequestSent(true)}
+                onClick={() => {
+                  setScheduledSessions([
+                    ...scheduledSessions,
+                    {
+                      title: `${selectedTutor.specialty} Session`,
+                      tutor: selectedTutor.name,
+                      day: "Saturday",
+                      time: "2:00 PM",
+                    },
+                  ]);
+                  setRequestSent(true);
+                }}
                 className="rounded-2xl bg-gradient-to-r from-sky-600 to-emerald-500 px-5 py-3 font-semibold text-white"
               >
                 Send Request
@@ -198,6 +217,15 @@ export default function App() {
       setPlanLoading(false);
     }, 1200);
   };
+
+  const [scheduledSessions, setScheduledSessions] = useState([
+  {
+    title: "Excel Tutor Session",
+    tutor: "Maya Chen",
+    day: "Saturday",
+    time: "2:00 PM",
+  },
+]);
 
   if (page === "login") {
     return (
@@ -371,6 +399,16 @@ export default function App() {
               <h3 className="text-xl font-semibold">Notifications</h3>
               <p className="mt-2 text-sm text-slate-500">
                 Manage reminders for lessons, tutor sessions, and weekly recap updates.
+              </p>
+            </button>
+
+            <button
+              onClick={() => setPage("schedule")}
+              className="rounded-3xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1"
+            >
+              <h3 className="text-xl font-semibold">Study Schedule</h3>
+              <p className="mt-2 text-sm text-slate-500">
+                View your upcoming tutor sessions and planned study appointments.
               </p>
             </button>
 
@@ -714,6 +752,48 @@ if (page === "notifications") {
   );
 }
 
+if (page === "schedule") {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
+      <TopNav setPage={setPage} />
+
+      <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
+        <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
+          Session Planner
+        </p>
+        <h1 className="text-4xl font-bold">Your Study Schedule</h1>
+        <p className="mt-3 max-w-2xl text-white/85">
+          Keep track of upcoming tutoring sessions and planned study support.
+        </p>
+      </div>
+
+      <div className="rounded-[32px] bg-white p-6 shadow-sm">
+        <h3 className="mb-4 text-xl font-semibold">Upcoming Sessions</h3>
+
+        <div className="space-y-4">
+          {scheduledSessions.map((session, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col justify-between gap-3 rounded-2xl border border-slate-200 p-4 md:flex-row md:items-center"
+            >
+              <div>
+                <p className="font-semibold text-slate-900">{session.title}</p>
+                <p className="text-sm text-slate-500">Tutor: {session.tutor}</p>
+              </div>
+
+              <div className="text-sm text-slate-600">
+                {session.day} · {session.time}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Back setPage={setPage} />
+    </div>
+  );
+}
+
   if (page === "lesson") {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
@@ -895,6 +975,8 @@ if (page === "notifications") {
           setSelectedTutor={setSelectedTutor}
           requestSent={requestSent}
           setRequestSent={setRequestSent}
+          scheduledSessions={scheduledSessions}
+          setScheduledSessions={setScheduledSessions}
         />
       </div>
     );
