@@ -35,6 +35,12 @@ function TopNav({ setPage }) {
         >
           Schedule
         </button>
+        <button
+          onClick={() => setPage("insights")}
+          className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
+        >
+          Insights
+        </button>
       
       </div>
     </div>
@@ -389,6 +395,16 @@ export default function App() {
               <h3 className="text-xl font-semibold">Weekly Recap</h3>
               <p className="mt-2 text-sm text-slate-500">
                 Review completed work, remaining tasks, and next-week focus.
+              </p>
+            </button>
+
+            <button
+              onClick={() => setPage("insights")}
+              className="rounded-3xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1"
+            >
+              <h3 className="text-xl font-semibold">Learning Insights</h3>
+              <p className="mt-2 text-sm text-slate-500">
+                Review mistakes, understand patterns, and get targeted recommendations.
               </p>
             </button>
 
@@ -889,6 +905,73 @@ if (page === "schedule") {
       </div>
     );
   }
+
+  if (page === "insights") {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
+      <TopNav setPage={setPage} />
+
+      <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
+        <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
+          AI Insights
+        </p>
+        <h1 className="text-4xl font-bold">Explain My Mistakes</h1>
+        <p className="mt-3 max-w-2xl text-white/85">
+          Understand where you're struggling and get targeted recommendations to improve faster.
+        </p>
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div className="rounded-[32px] bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-xl font-semibold">Common Mistakes</h3>
+
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-slate-200 p-4">
+              <p className="font-medium text-slate-900">Excel Formula Errors</p>
+              <p className="text-sm text-slate-500">
+                You frequently mix up SUM and AVERAGE functions.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 p-4">
+              <p className="font-medium text-slate-900">Budget Misclassification</p>
+              <p className="text-sm text-slate-500">
+                Expenses are sometimes categorized incorrectly.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 p-4">
+              <p className="font-medium text-slate-900">Time Planning Gaps</p>
+              <p className="text-sm text-slate-500">
+                Study sessions are skipped or not scheduled consistently.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-[32px] bg-white p-6 shadow-sm">
+          <h3 className="mb-4 text-xl font-semibold">AI Recommendations</h3>
+
+          <div className="space-y-4">
+            <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              Practice a short Excel formula drill focused on SUM vs AVERAGE.
+            </div>
+
+            <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              Review budget categories with a guided walkthrough.
+            </div>
+
+            <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+              Schedule at least 2 study sessions this week to stay consistent.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Back setPage={setPage} />
+    </div>
+  );
+}
 
   if (page === "tutor") {
     return (
