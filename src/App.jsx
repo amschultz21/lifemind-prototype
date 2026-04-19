@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-function TopNav({ setPage }) {
+function TopNav({ setPage, page }) {
   return (
     <div className="mb-6 flex items-center justify-between rounded-[24px] bg-white px-6 py-4 shadow-sm">
       <div>
@@ -10,37 +10,105 @@ function TopNav({ setPage }) {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <button onClick={() => setPage("dashboard")} className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">
+        <button 
+          onClick={() => setPage("dashboard")} 
+         className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+  page === "dashboard"
+    ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+    : "text-slate-600 hover:bg-slate-100"
+}`}
+        >
           Dashboard
         </button>
-        <button onClick={() => setPage("catalog")} className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">
-          Catalog
-        </button>
-        <button onClick={() => setPage("plan")} className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">
-          AI Plan
-        </button>
-        <button onClick={() => setPage("lesson")} className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">
-          Lesson
-        </button>
-        <button onClick={() => setPage("tutor")} className="rounded-2xl bg-gradient-to-r from-sky-600 to-emerald-500 px-4 py-2 text-sm font-semibold text-white">
-          Tutors
-        </button>
-        <button onClick={() => setPage("notifications")} className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
-          >
-          Notifications 
-        </button>
-        <button
-          onClick={() => setPage("schedule")}
-          className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
-        >
-          Schedule
-        </button>
-        <button
-          onClick={() => setPage("insights")}
-          className="rounded-2xl px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
-        >
-          Insights
-        </button>
+
+<button
+  onClick={() => setPage("catalog")}
+  className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+    page === "catalog"
+      ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+      : "text-slate-600 hover:bg-slate-100"
+  }`}
+>
+  Catalog
+</button>
+
+
+<button
+  onClick={() => setPage("plan")}
+  className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+    page === "plan"
+      ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+      : "text-slate-600 hover:bg-slate-100"
+  }`}
+>
+  AI Plan
+</button>
+
+<button
+  onClick={() => setPage("lesson")}
+  className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+    page === "lesson"
+      ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+      : "text-slate-600 hover:bg-slate-100"
+  }`}
+>
+  Lesson
+</button>
+
+<button
+  onClick={() => setPage("tutor")}
+  className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+    page === "tutor"
+      ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+      : "text-slate-600 hover:bg-slate-100"
+  }`}
+>
+  Tutor
+</button>
+
+<button
+  onClick={() => setPage("notifications")}
+  className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+    page === "notifications"
+      ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+      : "text-slate-600 hover:bg-slate-100"
+  }`}
+>
+  Notifications
+</button>
+
+<button
+  onClick={() => setPage("schedule")}
+  className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+    page === "schedule"
+      ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+      : "text-slate-600 hover:bg-slate-100"
+  }`}
+>
+  Schedule
+</button>
+
+<button
+  onClick={() => setPage("insights")}
+  className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+    page === "insights"
+      ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+      : "text-slate-600 hover:bg-slate-100"
+  }`}
+>
+  Insights
+</button>
+
+<button
+  onClick={() => setPage("missions")}
+  className={`rounded-2xl px-4 py-2 text-sm font-medium transition ${
+    page === "missions"
+      ? "bg-gradient-to-r from-sky-600 to-emerald-500 text-white"
+      : "text-slate-600 hover:bg-slate-100"
+  }`}
+>
+  Missions
+</button>
       
       </div>
     </div>
@@ -187,6 +255,7 @@ export default function App() {
   const [planIndex, setPlanIndex] = useState(0);
   const [planLoading, setPlanLoading] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const [missionSubmitted, setMissionSubmitted] = useState(false);
 
   const [selectedCourse, setSelectedCourse] = useState({
   tag: "Career",
@@ -323,7 +392,7 @@ export default function App() {
   if (page === "dashboard") {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-        <TopNav setPage={setPage} />
+        <TopNav setPage={setPage} page={page}/>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
@@ -371,6 +440,14 @@ export default function App() {
               <h3 className="text-xl font-semibold">AI Learning Plan</h3>
               <p className="mt-2 text-sm text-slate-500">
                 View your personalized weekly study roadmap.
+              </p>
+            </button>
+
+            <button onClick={() => setPage("missions")} className="rounded-3xl bg-white p-6 text-left shadow-sm transition hover:-translate-y-1"
+            >
+              <h3 className="text-xl font-semibold">Real-World Missions</h3>
+              <p className="mt-2 text-sm text-slate-500">
+                Apply your skills with mini tasks and receive mock feedback on your work.
               </p>
             </button>
 
@@ -443,7 +520,7 @@ export default function App() {
   if (page === "catalog") {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-        <TopNav setPage={setPage} />
+        <TopNav setPage={setPage} page={page} />
 
         <div className="mb-8 flex items-center justify-between">
           <div>
@@ -577,7 +654,7 @@ export default function App() {
   if (page === "plan") {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-        <TopNav setPage={setPage} />
+        <TopNav setPage={setPage}  page={page} />
 
         <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
           <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
@@ -646,10 +723,111 @@ export default function App() {
     );
   }
 
+  if (page === "missions") {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
+      <TopNav setPage={setPage}  page={page} />
+
+      <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
+        <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
+          Applied Learning
+        </p>
+        <h1 className="text-4xl font-bold">Real-World Missions</h1>
+        <p className="mt-3 max-w-2xl text-white/85">
+          Complete mini tasks that simulate real-life application of your learning and receive targeted feedback.
+        </p>
+      </div>
+
+      <div className="grid gap-6 xl:grid-cols-[1fr_340px]">
+        <div className="rounded-[32px] bg-white p-8 shadow-sm">
+          <div className="mb-4 flex flex-wrap gap-2">
+            <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700">
+              Career
+            </span>
+            <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+              Mission 01
+            </span>
+          </div>
+
+          <h2 className="text-3xl font-bold">Budget Cleanup Challenge</h2>
+          <p className="mt-3 text-slate-500">
+            Review a mock monthly budget and identify one spending category that should be adjusted. Then explain why your recommendation improves the overall budget.
+          </p>
+
+          <div className="mt-6 rounded-[24px] border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-400">
+            Mission prompt / sample worksheet placeholder
+          </div>
+
+          <div className="mt-6">
+            <label className="mb-2 block text-sm font-medium text-slate-700">
+              Submit your response
+            </label>
+            <textarea
+              className="min-h-[140px] w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-cyan-500"
+              placeholder="Example: I would reduce restaurant spending by 15% and shift that amount toward savings because..."
+            />
+          </div>
+
+          <div className="mt-6 flex gap-3">
+            <button
+              onClick={() => setMissionSubmitted(true)}
+              className="rounded-2xl bg-slate-900 px-5 py-3 text-white"
+            >
+              Submit Mission
+            </button>
+            <button className="rounded-2xl border border-slate-200 px-5 py-3">
+              Save Draft
+            </button>
+          </div>
+
+          {missionSubmitted && (
+            <div className="mt-4 rounded-2xl bg-emerald-50 p-4 text-sm text-emerald-700">
+              Mission submitted successfully. Feedback has been generated based on your response.
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-6">
+          <div className="rounded-[32px] bg-white p-6 shadow-sm">
+            <h3 className="mb-3 text-xl font-semibold">Mission Feedback</h3>
+            <div className="space-y-3">
+              <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+                Strong choice: your response focuses on a realistic category to reduce.
+              </div>
+              <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+                Improvement area: explain more clearly how your change affects long-term savings.
+              </div>
+              <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+                Recommended next step: revisit budgeting basics and complete one finance practice module.
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[32px] bg-white p-6 shadow-sm">
+            <h3 className="mb-3 text-xl font-semibold">Mission Status</h3>
+            <p className="text-sm text-slate-500">Application-based learning progress</p>
+            <div className="mt-3 h-3 w-full rounded-full bg-slate-200">
+              <div
+                className="h-3 rounded-full bg-gradient-to-r from-sky-600 to-emerald-500 transition-all duration-500"
+                style={{ width: missionSubmitted ? "100%" : "55%" }}
+              ></div>
+            </div>
+            <p className="mt-3 text-sm font-medium text-slate-700">
+              {missionSubmitted ? "Mission complete" : "In progress"}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <Back setPage={setPage} />
+    </div>
+  );
+}
+
   if (page === "recap") {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-      <TopNav setPage={setPage} />
+      <TopNav setPage={setPage}  page={page} />
 
       <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
         <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
@@ -698,7 +876,7 @@ export default function App() {
 if (page === "notifications") {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-      <TopNav setPage={setPage} />
+      <TopNav setPage={setPage}  page={page} />
 
       <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
         <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
@@ -771,7 +949,7 @@ if (page === "notifications") {
 if (page === "schedule") {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-      <TopNav setPage={setPage} />
+      <TopNav setPage={setPage}  page={page} />
 
       <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
         <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
@@ -813,7 +991,7 @@ if (page === "schedule") {
   if (page === "lesson") {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-        <TopNav setPage={setPage} />
+        <TopNav setPage={setPage}  page={page} />
 
         <div className="grid gap-6 xl:grid-cols-[1fr_320px]">
           <div className="rounded-[32px] bg-white p-8 shadow-sm">
@@ -909,7 +1087,7 @@ if (page === "schedule") {
   if (page === "insights") {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-      <TopNav setPage={setPage} />
+      <TopNav setPage={setPage}  page={page} />
 
       <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
         <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
@@ -976,7 +1154,7 @@ if (page === "schedule") {
   if (page === "tutor") {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-        <TopNav setPage={setPage} />
+        <TopNav setPage={setPage} page={page} />
 
         <div className="mb-8 rounded-[32px] bg-gradient-to-r from-sky-600 to-emerald-500 p-8 text-white shadow-xl">
           <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/70">
