@@ -1173,18 +1173,24 @@ if (page === "schedule") {
               specialty: "Career & Excel",
               bio: "Helps learners transition into entry-level business and analyst roles.",
               rating: "4.9",
+              price: "$30/hr",
+              availability: "Weekends",
             },
             {
               name: "Sofia Laurent",
               specialty: "French Conversation",
               bio: "Focuses on beginner-friendly speaking practice and real-life confidence.",
               rating: "4.8",
+              price: "$25/hr",
+              availability: "Evenings"
             },
             {
               name: "Jordan Ellis",
               specialty: "Study Skills & Productivity",
               bio: "Works with busy learners to build habits and stay accountable.",
               rating: "4.9",
+              price: "$35/hr",
+              availability: "Flexible"
             },
           ].map((tutor) => (
             <motion.div
@@ -1202,6 +1208,8 @@ if (page === "schedule") {
                 <div>
                   <h3 className="text-xl font-semibold">{tutor.name}</h3>
                   <p className="text-sm text-slate-500">{tutor.specialty}</p>
+
+                  <p className="text-sm text-slate-500">{tutor.price} • {tutor.availability}</p>
                 </div>
               </div>
 
