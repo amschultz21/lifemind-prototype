@@ -1,16 +1,59 @@
-# React + Vite
+# 🚀 LifeMind Prototype
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**LifeMind** is a microlearning platform designed to help users learn efficiently through short, structured lessons and personalized learning plans.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Key Features
 
-## React Compiler
+- 📚 Course Catalog Browsing  
+- 🎯 Step-by-Step Lessons  
+- 🤖 AI-Generated Weekly Learning Plans (mocked)  
+- 👩‍🏫 Tutor Browsing & Session Requests  
+- 📅 Scheduling & Study Tracking  
+- 📊 Progress Tracking Dashboard  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React  
+- Vite  
+- Tailwind CSS  
+- Vercel (Deployment)  
+
+---
+
+## 📌 Prototype Scope
+
+This is a **front-end prototype** built to demonstrate core user flows and system design.
+
+Backend functionality features like:
+- Authentication  
+- AI processing  
+- Scheduling logic  
+
+are simulated (mocked) within the application.
+
+---
+
+## 🌐 Live Demo
+
+https://lifemind-prototype.vercel.app/
+
+---
+
+## 🧠 Project Context
+
+This project was developed as part of a **Requirements Engineering course**, focusing on system design, user flows, and prototyping.
+
+---
+
+## 👥 Team
+
+End-to-End Thinkers  
+- Ayana Schultz  
+- Yolanda Olowoyo  
+- Joshua George  
+- Kevin Alvarado  
+- Carlos Vanegas  
