@@ -56,4 +56,10 @@ End-to-End Thinkers
 - Yolanda Olowoyo  
 - Joshua George  
 - Kevin Alvarado  
-- Carlos Vanegas  
+- Carlos Vanegas
+
+---
+
+## 🤖 Note
+
+This README was created with the help of AI to improve clarity and formatting.
